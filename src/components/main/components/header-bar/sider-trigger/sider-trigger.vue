@@ -3,7 +3,7 @@
 </template>
 <script>
 export default {
-  name: 'siderTrigger',
+  name: 'SiderTrigger',
   props: {
     collapsed: Boolean,
     icon: {
@@ -16,7 +16,7 @@ export default {
     }
   },
   methods: {
-    handleChange () {
+    handleChange() {
       this.$emit('on-change', !this.collapsed)
     }
   }

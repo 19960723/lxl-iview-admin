@@ -1,5 +1,4 @@
 const path = require('path')
-
 //  less                                  ^2.7.3  →       ^4.1.0
 //  less-loader                           ^4.0.5  →       ^7.3.0
 
@@ -38,9 +37,9 @@ module.exports = {
       .set('_c', resolve('src/components'))
   },
   // 设为false打包时不生成.map文件
-  productionSourceMap: false
+  productionSourceMap: false,
   // 这里写你调用接口的基础路径，来解决跨域，如果设置了代理，那你本地开发环境的axios的baseUrl要写为 '' ，即空字符串
-  // devServer: {
-  //   proxy: 'localhost:3000'
-  // }
+  devServer: {
+    proxy: 'http://192.168.1.108:3800'
+  }
 }

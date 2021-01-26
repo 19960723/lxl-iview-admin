@@ -174,6 +174,8 @@ export const canTurnTo = (name, access, routes) => {
         return routePermissionJudge(item.children)
       } else if (item.name === name) {
         return hasAccess(access, item)
+      } else {
+        return false
       }
     })
   }
@@ -234,7 +236,7 @@ export const getArrayFromFile = (file) => {
     const reader = new FileReader()
     reader.readAsText(file) // 以文本格式读取
     let arr = []
-    reader.onload = function (evt) {
+    reader.onload = function(evt) {
       const data = evt.target.result // 读到的数据
       const pasteData = data.trim()
       arr = pasteData.split((/[\n\u0085\u2028\u2029]|\r\n?/g)).map(row => {
@@ -301,16 +303,16 @@ export const findNodeUpperByClasses = (ele, classes) => {
 }
 
 export const findNodeDownward = (ele, tag) => {
-  const tagName = tag.toUpperCase()
-  if (ele.childNodes.length) {
-    let i = -1
-    const len = ele.childNodes.length
-    while (++i < len) {
-      const child = ele.childNodes[i]
-      if (child.tagName === tagName) return child
-      else return findNodeDownward(child, tag)
-    }
-  }
+  // const tagName = tag.toUpperCase()
+  // if (ele.childNodes.length) {
+  //   let i = -1
+  //   const len = ele.childNodes.length
+  //   while (++i < len) {
+  //     const child = ele.childNodes[i]
+  //     if (child.tagName === tagName) return child
+  //     else return findNodeDownward(child, tag)
+  //   }
+  // }
 }
 
 export const showByAccess = (access, canViewAccess) => {
@@ -357,7 +359,7 @@ export const scrollTop = (el, from = 0, to, duration = 500, endCallback) => {
       window.webkitRequestAnimationFrame ||
       window.mozRequestAnimationFrame ||
       window.msRequestAnimationFrame ||
-      function (callback) {
+      function(callback) {
         return window.setTimeout(callback, 1000 / 60)
       }
     )
